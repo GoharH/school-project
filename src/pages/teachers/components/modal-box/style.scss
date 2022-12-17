@@ -1,0 +1,40 @@
+@import 'src/assets/style/variables.scss';
+.modal-box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    .modal-bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: $blue-100-a;
+        //opacity: .5;
+    }
+    .modal-text {
+        width: 400px;
+        height: 200px;
+        padding: 20px;
+        background-color: white;
+        border: 1px solid white;
+        border-radius: 10px;
+        position: relative;
+        h3 {
+            margin-bottom: 45px;
+            color: $blue-100;
+        }
+        button {
+            width: 60px;
+            height: 30px;
+            margin: 10px;
+            border: 1px solid $blue-100;
+            border-radius: 5px;
+            color: $blue-100;
+        }
+    }
+}

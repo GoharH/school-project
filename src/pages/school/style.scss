@@ -1,0 +1,23 @@
+@import 'src/assets/style/variables.scss';
+.school-title {
+    color: $blue-800;
+}
+
+.school-btn {
+    color: $blue-500;
+    border: 1px solid $blue-500;
+    // position: absolute;
+    // top: 15px;
+    // left: 15px;
+    // z-index: 9;
+}
+
+.school-btn:hover {
+    background-color: $blue-500;
+    color: white;
+    transition: .3s;
+}
+
+.school-box {
+    border: 1px solid $blue-500;
+}

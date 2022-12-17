@@ -1,0 +1,213 @@
+@import "src/assets/style/variables.scss";
+.G-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.G-padding-25 {
+    width: 25%;
+    padding: 15px;
+}
+
+.G-padding-33 {
+    width: 33.3%;
+    padding: 15px;
+}
+
+.G-padding-50 {
+    width: 50%;
+    padding: 15px;
+}
+
+.G-main-pages {
+    width: calc(100% - 200px);
+}
+
+.G-page-container {
+    display: flex;
+}
+
+.G-page-header {
+    height: 60px;
+    border-bottom: 1px solid $sky-blue-light;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.G-page-scroll-body {
+    margin-top: 20px;
+    padding-left: 20px;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.G-page-created-boxes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.G-page-btn {
+    position: relative;
+    button {
+        padding: 5px 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        transition: 0.4s;
+        margin-bottom: 25px;
+    }
+}
+
+.G-form-page {
+    // width: 100%;
+    // height: 100%;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // display: flex;
+    // justify-content: center;
+    // overflow: hidden;
+    // overflow-y: auto;
+    // z-index: 999;
+    .G-fill-section {
+        width: 400px;
+        height: fit-content;
+        border-radius: 5px;
+        padding: 0px 30px 20px;
+    }
+    .G-input-title {
+        font-weight: 500;
+        margin: 20px 0px 2px 7px;
+    }
+    input {
+        width: 100%;
+        height: 30px;
+        padding: 3px 5px;
+        border-radius: 5px;
+    }
+    button {
+        width: 115px;
+        height: 30px;
+        padding: 3px 13px 5px;
+        margin-top: 20px;
+        color: white;
+        transition: 0.4s;
+        border-radius: 50px;
+    }
+    button:hover {
+        font-size: 17px;
+    }
+    .G-error-text {
+        font-size: 15px;
+        font-weight: 300;
+        color: $viv-magenta-light;
+        margin-left: 7px;
+    }
+}
+
+.G-created-box {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    position: relative;
+    margin: 10px;
+    .G-created-box-name {
+        position: absolute;
+        top: 0;
+        left: 40px;
+    }
+    .edit-icon,
+    .del-icon {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        display: block;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        top: 1px;
+        cursor: pointer;
+    }
+    .edit-icon {
+        left: 2px;
+    }
+    .del-icon {
+        right: 2px;
+        top: 5px;
+    }
+    .main-icon {
+        width: 195px;
+        height: 195px;
+        display: block;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+// wave button
+.G-wave-btn {
+    position: relative;
+    padding: 10px 20px;
+    display: block;
+    text-transform: uppercase;
+    width: 110px;
+    overflow: hidden;
+    border-radius: 40px;
+    cursor: pointer;
+    span {
+        position: relative;
+        color: #fff;
+        font-size: 15px;
+        letter-spacing: 3px;
+        z-index: 1;
+    }
+    .liquid {
+        position: absolute;
+        top: -80px;
+        left: 0;
+        width: 200px;
+        height: 200px;
+        background: #4973ff;
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+        transition: 0.5s;
+    }
+    .liquid::after,
+    .liquid::before {
+        content: "";
+        width: 200%;
+        height: 200%;
+        position: absolute;
+        top: 0;
+        left: 35%;
+        transform: translate(-50%, -75%);
+        background: #a9b6e3;
+    }
+    .liquid::before {
+        border-radius: 45%;
+        // background: rgba(20, 20, 20, 1);
+        background: rgba(24, 53, 157, 1);
+        animation: animate 5s linear infinite;
+    }
+    .liquid::after {
+        border-radius: 40%;
+        background: rgba(20, 20, 20, 0.5);
+        animation: animate 10s linear infinite;
+    }
+    .G-wave-btn:hover .liquid {
+        top: -120px;
+    }
+}
+
+@keyframes animate {
+    0% {
+        transform: translate(-50%, -75%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -75%) rotate(360deg);
+    }
+}

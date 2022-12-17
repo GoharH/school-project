@@ -1,0 +1,50 @@
+@import 'src/assets/style/variables.scss';
+.G-navbar-block {
+    width: 100px;
+    height: 100vh;
+    border-right: 1px solid $sky-blue-light;
+    padding: 20px 10px;
+}
+
+.menu-list {
+    padding-top: 35px;
+    li {
+        margin-bottom: 15px;
+    }
+    a {
+        color: $sky-blue-light;
+        font-weight: 500;
+    }
+    a:active,
+    a:hover {
+        color: $blue-100;
+    }
+}
+
+// .home-body {
+//     width: 100%;
+//     .creating-section {
+//         padding: 20px;
+//         display: flex;
+//         flex-wrap: wrap;
+//         // align-items: center;
+//         // justify-content: center;
+//         overflow: auto;
+//     }
+//     .creating-section {
+//         min-height: 100px;
+//         position: relative;
+//     }
+// }
+// .creating-section::-webkit-scrollbar {
+//     width: 10px;
+// }
+// .creating-section::-webkit-scrollbar-track {
+//     background: #f1f1f1;
+// }
+// .creating-section::-webkit-scrollbar-thumb {
+//     background: $sky-blue-light;
+// }
+// .creating-section::-webkit-scrollbar-thumb:hover {
+//     background: $viva-magenta;
+// }

@@ -1,0 +1,22 @@
+@import 'src/assets/style/variables.scss';
+.adding-btn {
+    button {
+        padding: 5px 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $blue-500;
+        border: 1px solid $blue-500;
+        background: white;
+        transition: .4s;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
+    button:hover {
+        background-color: $blue-500;
+        color: white;
+        transition: .3s;
+    }
+}

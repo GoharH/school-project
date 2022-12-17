@@ -1,0 +1,14 @@
+@import 'src/assets/style/variables.scss';
+.teacher-title {
+    color: $viva-magenta;
+}
+
+.teach-btn {
+    color: $viva-magenta;
+    border: 1px solid $viva-magenta;
+}
+
+.teach-btn:hover {
+    background-color: $viva-magenta;
+    color: white;
+}

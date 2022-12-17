@@ -1,0 +1,13 @@
+@import 'src/assets/style/variables.scss';
+.school-form {
+    background-color: $blue-100-a;
+    .school-filling-section {
+        border: 1px solid $blue-u;
+    }
+    .input-title {
+        color: $blue-u;
+    }
+    .school-button {
+        background-color: $blue-u;
+    }
+}

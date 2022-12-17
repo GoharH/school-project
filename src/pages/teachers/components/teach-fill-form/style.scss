@@ -1,0 +1,14 @@
+@import 'src/assets/style/variables.scss';
+.teach-page-form {
+    background-color: $viva-magenta;
+    .teach-fill-section {
+        border: 1px solid $viva-magenta;
+    }
+    .teach-input-title {
+        color: $orange;
+    }
+    .teach-button {
+        background-color: white;
+        color: $viva-magenta;
+    }
+}
