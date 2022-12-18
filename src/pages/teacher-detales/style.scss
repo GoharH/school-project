@@ -1,0 +1,16 @@
+@import "../../assets/style/variables.scss";
+.teacher-detales-title {
+    color: $viva-magenta;
+}
+
+.teacher-detalis-main {
+    color: $viva-magenta;
+    span {
+        color: $red-error;
+    }
+    .teacher-experience {
+        position: absolute;
+        left: 240px;
+        color: $viva-magenta;
+    }
+}

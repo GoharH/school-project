@@ -89,6 +89,7 @@ const PeopleForm = ({ selectedPeople, index, handleCloseModal }) => {
                 error={!!errorPeople.firstName}
                 errorText={errorPeople.firstName}
                 name={'firstName'}
+                disabled={selectedPeople}
                 value={people.firstName}
                 onChange={handleChange} />
 

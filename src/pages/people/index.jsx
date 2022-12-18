@@ -7,6 +7,7 @@ import peopleIcon from '../../assets/images/people.png';
 import ModalBox from './components/modal-box';
 import './style.scss'
 import Modal from "../../components/modal";
+import { Link } from "react-router-dom";
 
 const People = () => {
     const newPeopleList = useSelector(state => state.PeopleReducer.peopleList)
@@ -18,13 +19,17 @@ const People = () => {
     const handleAddClick = () => {
         setOpenManagePeople(true)
     }
-    const handleEdit = (people, index) => {
+    const handleEdit = (e, people, index) => {
         setSelectedPeople(people)
         setSelectedPeopleIndex(index)
         setOpenManagePeople(true)
+        e.stopPropagation()
+        e.preventDefault()
     }
-    const handleDelete = () => {
+    const handleDelete = (e) => {
         setOpenModal(true)
+        e.stopPropagation()
+        e.preventDefault()
     }
     const handleCloseModal = () => {
         setOpenManagePeople(false)
@@ -42,13 +47,15 @@ const People = () => {
             <div className="G-page-created-boxes">
                 {/* {openManagePeople ? <PeopleForm selectedPeople={selectedPeople} index={selectedPeopleIndex} handleCloseModal={handleCloseModal} /> : null} */}
                 {newPeopleList.map((people, index) => {
-                    return <div key={index} className='G-created-box people-box'>
-                        <p className="G-created-box-name">{people.firstName}</p>
-                        <span className="edit-icon" onClick={() => handleEdit(people, index)} style={{ backgroundImage: `url('${editIcon}')` }} ></span>
-                        <span className="main-icon" style={{ backgroundImage: `url('${peopleIcon}')` }}></span>
-                        <span className="del-icon" onClick={() => handleDelete(index)} style={{ backgroundImage: `url('${delIcon}')` }}></span>
+                    return <>
+                        <Link to={`/people/people-detales/${index}`} key={index} className='G-created-box people-box'>
+                            <p className="G-created-box-name">{people.firstName}</p>
+                            <span className="edit-icon" onClick={(e) => handleEdit(e, people, index)} style={{ backgroundImage: `url('${editIcon}')` }} ></span>
+                            <span className="main-icon" style={{ backgroundImage: `url('${peopleIcon}')` }}></span>
+                            <span className="del-icon" onClick={(e) => handleDelete(e, index)} style={{ backgroundImage: `url('${delIcon}')` }}></span>
+                        </Link>
                         {openModal ? <ModalBox info={people} index={index} openClose={() => setOpenModal(false)} /> : null}
-                    </div>
+                    </>
                 })}
             </div>
         </div>
@@ -59,4 +66,4 @@ const People = () => {
 
     </div>
 }
-export default People 
+export default People

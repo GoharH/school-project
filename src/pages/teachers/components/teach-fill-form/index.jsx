@@ -77,16 +77,17 @@ const TeacherFillForm = ({ selectedTeacher, index, handleCloseModal }) => {
             } else {
                 dispatch({ type: 'ADD_TEACHER', payload: teacher })
             }
+            setTeacher({
+                firstName: '',
+                lastName: '',
+                profession: '',
+                phoneNumber: '',
+                salery: '',
+                experience: ''
+            })
+            handleCloseModal()
         }
-        setTeacher({
-            firstName: '',
-            lastName: '',
-            profession: '',
-            phoneNumber: '',
-            salery: '',
-            experience: ''
-        })
-        handleCloseModal()
+
     }
     return <div className="G-form-page teach-page-form">
         <div className="G-fill-section teach-fill-section">

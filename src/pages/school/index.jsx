@@ -8,6 +8,7 @@ import schoolIcon from '../../assets/images/school.png';
 import delIcon from '../../assets/images/box-del1.png';
 import ModalBox from './components/modal-box';
 import Modal from "../../components/modal";
+import { Link } from "react-router-dom";
 
 
 const SchoolPage = () => {
@@ -24,21 +25,24 @@ const SchoolPage = () => {
         setOpenManageSchool(true)
 
     }
-    const handleEdit = (school, index) => {
+    const handleEdit = (e, school, index) => {
         setSelectedSchool(school)
         setSelectedSchoolIndex(index)
         setOpenManageSchool(true)
-
+        e.stopPropagation()
+        e.preventDefault()
     }
-    const handleDelete = (index) => {
+    const handleDelete = (e, index) => {
         // dispatch({ type: "DEL_SCHOOL", payload: index })
         setOpenModal(true)
+        e.stopPropagation()
+        e.preventDefault()
     }
 
     const handleCloseModal = () => {
         setOpenManageSchool(false)
-        // setSelectedSchool(null)
-        // setSelectedSchoolIndex(null)
+        setSelectedSchool(null)
+        setSelectedSchoolIndex(null)
     }
     return <div className="G-page-box">
         <div className='G-page-header'>
@@ -54,13 +58,15 @@ const SchoolPage = () => {
             </div>
             <div className="G-page-created-boxes">
                 {newSchoolList.map((school, index) => {
-                    return <div key={index} className='G-created-box school-box'>
-                        <p className="G-created-box-name">{school.schoolName}</p>
-                        <span className="edit-icon" onClick={() => handleEdit(school, index)} style={{ backgroundImage: `url('${editIcon}')` }}></span>
-                        <span className="main-icon" style={{ backgroundImage: `url('${schoolIcon}')` }}></span>
-                        <span className="del-icon" onClick={() => handleDelete(index)} style={{ backgroundImage: `url('${delIcon}')` }}></span>
+                    return <>
+                        <Link to={`/school-detales/${index}`} key={index} className='G-created-box school-box'>
+                            <p className="G-created-box-name">{school.schoolName}</p>
+                            <span className="edit-icon" onClick={(e) => handleEdit(e, school, index)} style={{ backgroundImage: `url('${editIcon}')` }}></span>
+                            <span className="main-icon" style={{ backgroundImage: `url('${schoolIcon}')` }}></span>
+                            <span className="del-icon" onClick={(e) => handleDelete(e, index)} style={{ backgroundImage: `url('${delIcon}')` }}></span>
+                        </Link>
                         {openModal ? <ModalBox info={school} openClose={() => setOpenModal(false)} index={index} /> : null}
-                    </div>
+                    </>
                 })}
             </div>
         </div>

@@ -92,17 +92,18 @@ const SchoolForm = ({ selectedSchool, index, handleCloseModal }) => {
             } else {
                 dispatch({ type: 'ADD_SCHOOL', payload: school })
             }
+            setSchool({
+                schoolName: '',
+                director: '',
+                address: '',
+                contact: '',
+                emailAddress: '',
+                teachersMaxCount: 0,
+                peopleMaxCount: 0,
+            })
+            handleCloseModal()
         }
-        setSchool({
-            schoolName: '',
-            director: '',
-            address: '',
-            contact: '',
-            emailAddress: '',
-            teachersMaxCount: 0,
-            peopleMaxCount: 0,
-        })
-        handleCloseModal()
+
     }
     return <div className="G-form-page school-form">
         <div className="G-fill-section school-filling-section ">

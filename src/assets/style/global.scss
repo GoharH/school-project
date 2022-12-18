@@ -211,3 +211,20 @@
         transform: translate(-50%, -75%) rotate(360deg);
     }
 }
+
+// page detales style
+.G-page-detales {
+    padding: 30px 40px;
+    .G-detales-title {
+        margin-bottom: 20px;
+    }
+    .G-detales-main {
+        margin-bottom: 5px;
+        display: flex;
+        position: relative;
+    }
+    .G-detales-main-left {
+        position: absolute;
+        left: 210px;
+    }
+}
