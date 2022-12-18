@@ -66,8 +66,8 @@ const TeacherFillForm = ({ selectedTeacher, index, handleCloseModal }) => {
             isValidate = false
         }
         seterrorTeacher(newErrors)
-        return isValidate
-        //return true
+        //return isValidate
+        return true
     }
     const handleConfirmClick = () => {
         if (validation()) {

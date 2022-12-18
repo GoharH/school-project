@@ -74,8 +74,8 @@ const SchoolForm = ({ selectedSchool, index, handleCloseModal }) => {
             isValidate = false
         }
         setErrorSchool(newErrors)
-        return isValidate
-        //return true
+        //return isValidate
+        return true
     }
 
     const handleChange = (e) => {

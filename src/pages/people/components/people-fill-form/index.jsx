@@ -78,8 +78,8 @@ const PeopleForm = ({ selectedPeople, index, handleCloseModal }) => {
         }
 
         setErrorPeople(newErrors)
-        return isValidate
-        //return true
+        //return isValidate
+        return true
     }
 
 

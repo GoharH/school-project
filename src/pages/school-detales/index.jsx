@@ -6,6 +6,8 @@ import './style.scss'
 const SchoolDetales = () => {
     const { id } = useParams()
     const schoolsList = useSelector(state => state.SchoolReducer.schoolsList)
+    const teachersList = useSelector(state => state.TeacherReducer.teachersList)
+    const peopleList = useSelector(state => state.PeopleReducer.peopleList)
     const [school, setSchool] = useState({
         schoolName: '',
         director: '',
@@ -18,6 +20,7 @@ const SchoolDetales = () => {
         peopleList: [],
         fund: 0
     })
+
     useEffect(() => {
         console.log(id)
         schoolsList.forEach((item, index) => {
@@ -34,9 +37,28 @@ const SchoolDetales = () => {
         <p className="G-detales-main school-detalis-main">Էլ․հասցե <span className="G-detales-main-left"> {school.emailAddress}</span></p>
         <p className="G-detales-main school-detalis-main">Ուսուցիչների թիվ․ <span className="G-detales-main-left">{school.teachersMaxCount}</span> </p>
         <p className="G-detales-main school-detalis-main">Աշակերտների թիվ․  <span className="G-detales-main-left">{school.peopleMaxCount}</span></p>
-        <p className="G-detales-main school-detalis-main">Ուսուցիչների ցանկ․  <span className="G-detales-main-left">{school.teachersList}</span></p>
-        <p className="G-detales-main school-detalis-main">Աշակերտների ցանկ․ <span className="G-detales-main-left">{school.peopleList}</span> </p>
+        <p className="G-detales-main school-detalis-main">Ուսուցիչների ցանկ․
+            <select>
+                {teachersList.map((item, index) => {
+                    return <option value={index}>{item.firstName}</option>
+                })}
+            </select>
+            {/* <span className="G-detales-main-left">{school.teachersList}</span> */}
+        </p>
+        <p className="G-detales-main school-detalis-main">Աշակերտների ցանկ․
+
+            {/* <span className="G-detales-main-left">{school.peopleList}</span>  */}
+        </p>
+        <div className="people-list-in-school">
+            {peopleList.map((item, index) => {
+                return <div className="people-in-school">
+                    <p>{item.firstName} {item.lastName}</p>
+                    <input type="radio" value={index} name='people-check' />
+                </div>
+            })}
+        </div>
         <p className="G-detales-main school-detalis-main">Բյուջե․ <span className="G-detales-main-left">{school.fund}</span> </p>
+
     </div>
 }
 export default SchoolDetales
