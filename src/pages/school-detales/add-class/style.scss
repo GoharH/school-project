@@ -1,0 +1,46 @@
+@import "../../../assets/style/variables.scss";
+.add-class-section {
+    width: 500px;
+    // height: fit-content;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: $blue-800;
+    opacity: 0.8;
+    border-radius: 10px;
+    .class-name {
+        margin-right: 15px;
+        input {
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+            padding: 3px 5px;
+        }
+    }
+    .class-head {
+        width: 200px;
+        height: 30px;
+        border-radius: 5px;
+        // color: $blue-800;
+    }
+    .people-list {
+        margin: 20px 0px;
+        .people-list-item {
+            display: flex;
+        }
+    }
+    .people-inp {
+        margin-right: 15px;
+    }
+    .class-btns {
+        display: flex;
+        .class-btn {
+            width: 100px;
+            padding: 8px 5px;
+            border-radius: 5px;
+            margin: 5px;
+        }
+    }
+}

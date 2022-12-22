@@ -17,3 +17,25 @@
 .people-in-school {
     display: flex;
 }
+
+.added-classes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add-class-btn {
+    width: 200px;
+    height: 30px;
+    border: 1px solid $blue-u;
+    border-radius: 5px;
+    color: $blue-u;
+    margin: 35px 0px;
+}
+
+.added-class {
+    padding: 10px;
+    border: 1px solid $blue-800;
+    border-radius: 5px;
+    margin: 5px;
+    color: $blue-u;
+}

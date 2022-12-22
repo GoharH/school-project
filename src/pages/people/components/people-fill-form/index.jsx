@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CustomInput from "../../../../components/custom-input";
 import './style.scss';
 
 
 const PeopleForm = ({ selectedPeople, index, handleCloseModal }) => {
     const dispatch = useDispatch()
+    const peopleList = useSelector(state => state.PeopleReducer.peopleList)
     const [people, setPeople] = useState({
         firstName: '',
         lastName: '',
@@ -20,12 +21,15 @@ const PeopleForm = ({ selectedPeople, index, handleCloseModal }) => {
         phoneNumber: ''
     })
 
-    useEffect(() => {
-        if (selectedPeople) {
-            setPeople(selectedPeople)
-        }
+    // useEffect(() => {
 
-    }, [])
+    //     if (selectedPeople) {
+    //         setPeople(selectedPeople)
+    //     }
+    // }, [])
+    useEffect(() => {
+        // localStorage.setItem("peopleList", JSON.stringify(peopleList))
+    }, [peopleList])
 
     const handleChange = (e) => {
         setPeople({ ...people, [e.target.name]: e.target.value })

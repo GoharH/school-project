@@ -26,6 +26,17 @@ const SchoolReducer = (state = initialState, action) => {
                 })
                 return {...state, schoolsList: newUpdatedSchools }
             }
+        case 'ADD_CLASS_LIST':
+
+            {
+                const newUpdatedSchools = state.schoolsList.map((item, i) => {
+                    if (action.payload.index === i) {
+                        item.classList.push(action.payload.classData)
+                    }
+                    return item
+                })
+                return {...state, schoolsList: newUpdatedSchools }
+            }
         default:
             {
                 return state

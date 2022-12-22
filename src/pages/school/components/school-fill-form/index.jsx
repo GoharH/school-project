@@ -16,6 +16,7 @@ const SchoolForm = ({ selectedSchool, index, handleCloseModal }) => {
         peopleMaxCount: 0,
         teachersList: [],
         peopleList: [],
+        classList: [],
         fund: 0
     })
     const [errorSchool, setErrorSchool] = useState({

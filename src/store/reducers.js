@@ -7,5 +7,6 @@ const rootReducer = combineReducers({
     SchoolReducer,
     TeacherReducer,
     PeopleReducer,
+
 })
 export default rootReducer

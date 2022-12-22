@@ -99,7 +99,7 @@
         border-radius: 50px;
     }
     button:hover {
-        font-size: 17px;
+        background-color: #a9b6e3;
     }
     .G-error-text {
         font-size: 15px;
@@ -215,6 +215,8 @@
 // page detales style
 .G-page-detales {
     padding: 30px 40px;
+    // overflow: hidden;
+    // overflow-y: auto;
     .G-detales-title {
         margin-bottom: 20px;
     }
