@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './style.scss';
 //import AddingButton from '../../components/adding-btn';
 import SchoolForm from './components/school-fill-form';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import editIcon from '../../assets/images/edit.svg';
 import schoolIcon from '../../assets/images/school.png';
 import delIcon from '../../assets/images/box-del1.png';
@@ -21,6 +21,7 @@ const SchoolPage = () => {
     // finde cuurent  school data from school list
     const [selectedSchoolIndex, setSelectedSchoolIndex] = useState(null)
     const [openManageSchool, setOpenManageSchool] = useState(false)
+
     const handleClick = () => {
         setOpenManageSchool(true)
 
@@ -44,6 +45,15 @@ const SchoolPage = () => {
         setSelectedSchool(null)
         setSelectedSchoolIndex(null)
     }
+
+    useEffect(() => {
+        if (newSchoolList.length) {
+            localStorage.setItem('school-list', JSON.stringify(newSchoolList))
+        }
+    }, [newSchoolList])
+
+
+
     return <div className="G-page-box">
         <div className='G-page-header'>
             <h3 className="school-title">Դպրոց</h3>
@@ -58,15 +68,15 @@ const SchoolPage = () => {
             </div>
             <div className="G-page-created-boxes">
                 {newSchoolList.map((school, index) => {
-                    return <>
-                        <Link to={`/school-detales/${index}`} key={index} className='G-created-box school-box'>
+                    return <div key={index}>
+                        <Link to={`/school-detales/${index}`} className='G-created-box school-box'>
                             <p className="G-created-box-name">{school.schoolName}</p>
                             <span className="edit-icon" onClick={(e) => handleEdit(e, school, index)} style={{ backgroundImage: `url('${editIcon}')` }}></span>
                             <span className="main-icon" style={{ backgroundImage: `url('${schoolIcon}')` }}></span>
                             <span className="del-icon" onClick={(e) => handleDelete(e, index)} style={{ backgroundImage: `url('${delIcon}')` }}></span>
                         </Link>
                         {openModal ? <ModalBox info={school} openClose={() => setOpenModal(false)} index={index} /> : null}
-                    </>
+                    </div>
                 })}
             </div>
         </div>

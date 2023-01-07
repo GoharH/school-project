@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PeopleForm from './components/people-fill-form';
 import editIcon from '../../assets/images/edit.svg';
 import delIcon from '../../assets/images/box-del1.png';
@@ -15,6 +15,7 @@ const People = () => {
     const [selectedPeopleIndex, setSelectedPeopleIndex] = useState(null)
     const [openModal, setOpenModal] = useState(false)
     const [openManagePeople, setOpenManagePeople] = useState(false)
+    const dispatch = useDispatch()
 
     const handleAddClick = () => {
         setOpenManagePeople(true)
@@ -36,6 +37,14 @@ const People = () => {
         setSelectedPeople(null)
         setSelectedPeopleIndex(null)
     }
+
+    useEffect(() => {
+        if (newPeopleList.length) {
+            localStorage.setItem("peopleList", JSON.stringify(newPeopleList))
+        }
+    }, [newPeopleList])
+
+
     return <div className="G-page-box">
         <div className='G-page-header'>
             <h3 className="people-title">Աշակերտ</h3>
@@ -47,15 +56,15 @@ const People = () => {
             <div className="G-page-created-boxes">
                 {/* {openManagePeople ? <PeopleForm selectedPeople={selectedPeople} index={selectedPeopleIndex} handleCloseModal={handleCloseModal} /> : null} */}
                 {newPeopleList.map((people, index) => {
-                    return <>
-                        <Link to={`/people/people-detales/${index}`} key={index} className='G-created-box people-box'>
+                    return <div key={index}>
+                        <Link to={`/people/people-detales/${index}`} className='G-created-box people-box'>
                             <p className="G-created-box-name">{people.firstName}</p>
                             <span className="edit-icon" onClick={(e) => handleEdit(e, people, index)} style={{ backgroundImage: `url('${editIcon}')` }} ></span>
                             <span className="main-icon" style={{ backgroundImage: `url('${peopleIcon}')` }}></span>
                             <span className="del-icon" onClick={(e) => handleDelete(e, index)} style={{ backgroundImage: `url('${delIcon}')` }}></span>
                         </Link>
                         {openModal ? <ModalBox info={people} index={index} openClose={() => setOpenModal(false)} /> : null}
-                    </>
+                    </div>
                 })}
             </div>
         </div>

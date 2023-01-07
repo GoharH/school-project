@@ -20,18 +20,27 @@ const AddClass = ({ schoolIndex, onClose }) => {
         //galis e cnoxic
         onClose()
     }
+
     const handleSaveClass = () => {
-        dispatch({ type: 'ADD_CLASS_LIST', payload: { classData: classModel, index: +schoolIndex } }) //ushadir, vor indexy ga tvayin
-        onClose()
+        console.log(classModel.peopleList)
+        if (classModel.className.trim().length && classModel.teacher) {
+            dispatch({ type: 'ADD_CLASS_LIST', payload: { classData: classModel, index: +schoolIndex } }) //ushadir, vor indexy ga tvayin
+            onClose()
+        }
     }
 
     // gtnum enq nshac usucchin
     const handleSelectTeacher = (e) => {
-        teachersList.forEach((item, index) => {
-            if (index === +e.target.value) {
-                setClassModel({ ...classModel, teacher: item })
-            }
-        })
+        // console.log(e.target.value)
+        if (e.target.value || e.target.value === 0) {
+            teachersList.forEach((item, index) => {
+                if (index === +e.target.value) {
+                    setClassModel({ ...classModel, teacher: item })
+                }
+            })
+        } else {
+            setClassModel({ ...classModel, teacher: null })
+        }
     }
 
     const handleSelectPeople = (e) => {
@@ -44,15 +53,15 @@ const AddClass = ({ schoolIndex, onClose }) => {
         }
 
         const childrensList = []
-        const peopleName = []
+        // const peopleName = []
         peopleList.forEach((item, index) => {
             if (newList.includes(index)) {
                 childrensList.push(item)
             }
-            if (newList.includes(index)) {
-                peopleName.push(item.firstName)
-            }
-            console.log(peopleName)
+            // if (newList.includes(index)) {
+            //     peopleName.push(item.firstName)
+            // }
+            // console.log(peopleName)
         })
 
         setClassModel({ ...classModel, peopleListIndex: newList, peopleList: childrensList })
@@ -66,6 +75,7 @@ const AddClass = ({ schoolIndex, onClose }) => {
             <label >
                 <p>Դասղեկ</p>
                 <select className="class-head" onChange={handleSelectTeacher}>
+                    <option value="">Ընտրել դասղեկ</option>
                     {teachersList.map((item, index) => {
                         return <option value={index} key={index}>{item.firstName}</option>
                     })}

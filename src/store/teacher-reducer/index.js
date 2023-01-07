@@ -10,8 +10,12 @@ const TeacherReducer = (state = initialState, action) => {
             }
         case 'DEL_TEACHER':
             {
-                console.log(action)
+                //console.log(action)
                 return {...state, teachersList: state.teachersList.filter((item, i) => i !== action.payload) }
+            }
+        case 'SET_TEACHER_LIST_FROM_STORAGE':
+            {
+                return {...state, teachersList: action.payload }
             }
         case 'EDIT_TEACHER':
             {

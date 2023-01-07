@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Modal from "../../components/modal";
 import AddClass from "./add-class";
@@ -7,6 +7,7 @@ import './style.scss'
 
 const SchoolDetales = () => {
     const { id } = useParams()
+    const dispatch = useDispatch()
     const [openManageSchoolClasses, setOpenManageSchoolClasses] = useState(false)
     const schoolsList = useSelector(state => state.SchoolReducer.schoolsList)
     const [school, setSchool] = useState({
@@ -37,6 +38,18 @@ const SchoolDetales = () => {
     const handleAddClass = () => {
         setOpenManageSchoolClasses(true)
     }
+    useEffect(() => {
+        let list = JSON.parse(localStorage.getItem('school-list'))
+        console.log(list)
+        if (list) {
+            dispatch({ type: 'SET_SCHOOL_LIST_FROM_STORAGE', payload: list })
+        }
+    }, [])
+    useEffect(() => {
+        if (schoolsList.length) {
+            localStorage.setItem('school-list', JSON.stringify(schoolsList))
+        }
+    }, [schoolsList])
 
 
     return <div className="G-page-detales">

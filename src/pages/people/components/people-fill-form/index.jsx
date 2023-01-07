@@ -21,22 +21,19 @@ const PeopleForm = ({ selectedPeople, index, handleCloseModal }) => {
         phoneNumber: ''
     })
 
-    // useEffect(() => {
-
-    //     if (selectedPeople) {
-    //         setPeople(selectedPeople)
-    //     }
-    // }, [])
     useEffect(() => {
-        // localStorage.setItem("peopleList", JSON.stringify(peopleList))
-    }, [peopleList])
+
+        if (selectedPeople) {
+            setPeople(selectedPeople)
+        }
+    }, [])
+
 
     const handleChange = (e) => {
         setPeople({ ...people, [e.target.name]: e.target.value })
         setErrorPeople({ ...errorPeople, [e.target.name]: '' })
     }
     const handleConfirmClick = () => {
-        console.log(people);
         if (validation()) {
             if (selectedPeople) {
                 dispatch({ type: 'EDIT_PEOPLE', payload: { peopleData: people, index } })
@@ -93,7 +90,6 @@ const PeopleForm = ({ selectedPeople, index, handleCloseModal }) => {
                 error={!!errorPeople.firstName}
                 errorText={errorPeople.firstName}
                 name={'firstName'}
-                disabled={selectedPeople}
                 value={people.firstName}
                 onChange={handleChange} />
 

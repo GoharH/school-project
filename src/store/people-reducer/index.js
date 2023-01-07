@@ -6,29 +6,21 @@ const PeopleReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_PEOPLE':
             {
-                // const newPeopleList = JSON.parse(localStorage.getitem('peopleList'))
-                // if (newPeopleList) {
-                //     return {...state, peopleList: newPeopleList }
-                // } else {
-                //     return {...state, peopleList: [] }
-                // }
+                console.log(action.payload)
                 return {...state, peopleList: [...state.peopleList, action.payload] }
             }
 
 
         case 'DEL_PEOPLE':
             {
-                // let localPeople = JSON.parse(localStorage.getItem('peopleList'))
-                // const index = localPeople.indexOf(action.payload)
-                // if (index === -1) {
-                //     localPeople.splice(index, 1)
-                // }
-                // localStorage.setItem('peopleList', JSON.stringify(localPeople))
-                // return {...state, peopleList: localPeople }
+
                 return {...state, peopleList: state.peopleList.filter((item, i) => i !== action.payload) }
             }
 
-
+        case 'SET_LIST_FROM_STORAGE':
+            {
+                return {...state, peopleList: action.payload }
+            }
 
 
         case 'EDIT_PEOPLE':
@@ -43,7 +35,7 @@ const PeopleReducer = (state = initialState, action) => {
             }
         default:
             {
-                return state
+                return {...state }
             }
     }
 }

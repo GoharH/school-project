@@ -15,6 +15,10 @@ const SchoolReducer = (state = initialState, action) => {
                 // state.schoolsList.splice(action.payload, 1)
                 // return {...state, schoolsList:[...state.schoolsList]}
             }
+        case 'SET_SCHOOL_LIST_FROM_STORAGE':
+            {
+                return {...state, schoolsList: action.payload }
+            }
         case 'EDIT_SCHOOL':
             {
                 //console.log(action.payload);

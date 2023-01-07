@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import TeacherFillForm from './components/teach-fill-form';
 import './style.scss';
 import editIcon from '../../assets/images/edit.svg';
@@ -15,6 +15,7 @@ const Teachers = () => {
     const [selectedTeacher, setSelectedTeacher] = useState(null)
     const [selectedTeacherIndex, setSelectedTeacherIndex] = useState(null)
     const [openManageTeacher, setOpenManageTeacher] = useState(false)
+    const dispatch = useDispatch()
 
     const handleAddClick = () => {
         setOpenManageTeacher(true)
@@ -38,6 +39,13 @@ const Teachers = () => {
         setSelectedTeacherIndex(null)
     }
 
+    useEffect(() => {
+        if (newTeacherList.length) {
+            localStorage.setItem('teacher-list', JSON.stringify(newTeacherList))
+        }
+    }, [newTeacherList])
+
+
     return <div className="G-page-box">
         <div className="G-page-header">
             <h3 className="teacher-title">Ուսուցիչ</h3>
@@ -48,8 +56,8 @@ const Teachers = () => {
             </div>
             <div className="G-page-created-boxes">
                 {newTeacherList.map((teacher, index) => {
-                    return <>
-                        <Link to={`/teachers/teachers-detales/${index}`} key={index} className='G-created-box teacher-box'>
+                    return <div key={index}>
+                        <Link to={`/teachers/teachers-detales/${index}`} className='G-created-box teacher-box'>
                             <p className="G-created-box-name">{teacher.firstName}</p>
                             <span className="edit-icon" onClick={(e) => handleEdit(e, teacher, index)} style={{ backgroundImage: `url('${editIcon}')` }}></span>
                             <span className="main-icon" style={{ backgroundImage: `url('${teachIcon}')` }}></span>
@@ -57,7 +65,7 @@ const Teachers = () => {
                         </Link>
                         {openModal ? <ModalBox info={teacher} openClose={() => setOpenModal(false)} index={index} /> : null}
 
-                    </>
+                    </div>
                 })}
             </div>
         </div>
